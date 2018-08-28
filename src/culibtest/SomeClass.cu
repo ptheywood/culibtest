@@ -95,11 +95,7 @@ namespace culibtest {
 		unsigned int idx = threadIdx.x + blockDim.x * blockIdx.x;
 
 		if (idx < N) {
-			
 			d_indices[idx] = device_function_ptr(N);
-			if (idx < 16) {
-				printf("tid %u: value %u\n", idx, d_indices[idx]);
-			}
 		}
 	}
 	

@@ -29,17 +29,52 @@ BOOST_AUTO_TEST_CASE(setPrivateIntCheck)
 	BOOST_CHECK(instance.getPrivateInt() == newValue);
 }
 
+typedef unsigned int(*dfuncptr)(unsigned int);
 
-//BOOST_AUTO_TEST_CASE(launchRandomKernalCheck1024)
-//{
-//	BOOST_TEST_MESSAGE("\nTesting SomeClass::launchRandomKernal\n");
-//	const unsigned int threads = 1024;
-//	const unsigned int expectedAnswer = 524800;
-//
-//	culibtest::SomeClass instance = culibtest::SomeClass();
-//
-//	BOOST_CHECK(instance.launchRandomKernal(threads) == expectedAnswer);
-//}
+__device__ unsigned int someDeviceFunction(unsigned int N) {
+	return 1;
+}
+__device__ dfuncptr someDeviceFunction_ptr = someDeviceFunction;
+
+
+BOOST_AUTO_TEST_CASE(launchRandomKernalCheck1024)
+{
+	BOOST_TEST_MESSAGE("\nTesting SomeClass::launchRandomKernal\n");
+	const unsigned int threads = 1024;
+	const unsigned int expectedAnswer = 1024;
+
+	dfuncptr h_deviceFunctionPointer = nullptr;
+	cudaMemcpyFromSymbol(&h_deviceFunctionPointer, someDeviceFunction_ptr, sizeof(dfuncptr));
+
+	culibtest::SomeClass instance = culibtest::SomeClass();
+	unsigned int sum = instance.launchRandomKernal(h_deviceFunctionPointer, threads);
+
+	BOOST_CHECK( sum == expectedAnswer);
+}
+
+__device__ unsigned int triangularNumberFunc(unsigned int N) {
+	unsigned int idx = threadIdx.x + blockDim.x * blockIdx.x;
+	return idx + 1;
+}
+__device__ dfuncptr triangularNumberFunc_ptr = triangularNumberFunc;
+
+
+BOOST_AUTO_TEST_CASE(triangularNumberKernalCheck1024)
+{
+	BOOST_TEST_MESSAGE("\nTesting SomeClass::launchRandomKernal with traingular number\n");
+	const unsigned int threads = 1024;
+	const unsigned int expectedAnswer = 524800; // 1024th trianular number
+
+	dfuncptr h_deviceFunctionPointer = nullptr;
+	cudaMemcpyFromSymbol(&h_deviceFunctionPointer, triangularNumberFunc_ptr, sizeof(dfuncptr));
+
+
+
+	culibtest::SomeClass instance = culibtest::SomeClass();
+	unsigned int sum = instance.launchRandomKernal(h_deviceFunctionPointer, threads);
+
+	BOOST_CHECK(sum == expectedAnswer);
+}
 
 
 BOOST_AUTO_TEST_SUITE_END()
