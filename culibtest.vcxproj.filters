@@ -24,18 +24,10 @@
     <ClInclude Include="include\culibtest\SomeClass.h">
       <Filter>include\culibtest</Filter>
     </ClInclude>
-    <ClInclude Include="include\culibtest\user.h">
-      <Filter>include\culibtest</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="src\culibtest\SomeClass.cu">
       <Filter>src\culibtest</Filter>
     </CudaCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\culibtest\temp.cpp">
-      <Filter>src\culibtest</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

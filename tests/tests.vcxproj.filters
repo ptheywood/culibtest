@@ -6,13 +6,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="test_all.cpp">
-      <Filter>tests</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="test_SomeClass.h">
       <Filter>tests</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="test_all.cu">
+      <Filter>tests</Filter>
+    </CudaCompile>
   </ItemGroup>
 </Project>
