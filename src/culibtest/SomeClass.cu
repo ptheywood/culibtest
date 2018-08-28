@@ -5,7 +5,6 @@
 #include <cstring>
 
 #include <cuda_runtime.h>
-#include <culibtest/user.h>
 
 namespace culibtest {
 	

@@ -22,7 +22,7 @@ namespace culibtest {
 			unsigned int getPrivateInt();
 			bool setPrivateInt(unsigned int value);
 
-			unsigned int SomeClass::launchRandomKernal(unsigned int(*device_function_ptr)(unsigned int), const unsigned int N);
+			unsigned int launchRandomKernal(unsigned int(*device_function_ptr)(unsigned int), const unsigned int N);
 	};
 
 	
