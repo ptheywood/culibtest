@@ -72,7 +72,7 @@
       <Include>
       </Include>
       <Defines>CULIBTEST_DLL</Defines>
-      <CodeGeneration>compute_30,sm_30</CodeGeneration>
+      <CodeGeneration>compute_61,sm_61</CodeGeneration>
       <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
     </CudaCompile>
   </ItemDefinitionGroup>
@@ -97,7 +97,7 @@
       <Include>
       </Include>
       <Defines>CULIBTEST_DLL</Defines>
-      <CodeGeneration>compute_30,sm_30</CodeGeneration>
+      <CodeGeneration>compute_61,sm_61</CodeGeneration>
       <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
     </CudaCompile>
   </ItemDefinitionGroup>

@@ -39,6 +39,15 @@ int main(int argc, char * argv[]){
 	printf("%p, %p\n", someDeviceFunction_ptr, h_someDeviceFunction_ptr);
 	unsigned int sum = obj.launchRandomKernal(h_someDeviceFunction_ptr, 1024);
 
+	status = cudaDeviceSynchronize();
+	if (cudaSuccess != status) {
+		printf("cuda error %s:%d!\n\t%d:%s\n", __FILE__, __LINE__, status, cudaGetErrorString(status));
+	}
+	status = cudaGetLastError();
+	if (cudaSuccess != status) {
+		printf("cuda error %s:%d!\n\t%d:%s\n", __FILE__, __LINE__, status, cudaGetErrorString(status));
+	}
+
 	printf("sum: %u\n", sum);
 	
 	
