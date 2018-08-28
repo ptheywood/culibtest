@@ -23,5 +23,9 @@ set_property(TARGET helloWorld PROPERTY CUDA_SEPARABLE_COMPILATION ON)
 # Define include dirs
 target_include_directories(helloWorld PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../include)
 
+# Add link libraries location
+# link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../lib/${CMAKE_BUILD_TYPE})
+
 # Define link libraries for the target
-target_link_libraries(helloWorld culibtest)
+# target_link_libraries(helloWorld culibtest)
+target_link_libraries(helloWorld ${CMAKE_CURRENT_SOURCE_DIR}/../../lib/${CMAKE_BUILD_TYPE}/libculibtest.so)

@@ -11,7 +11,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/common.cmake)
 
 
 # Define output location of binary files
-SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${culibtest_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}/)
+SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${culibtest_SOURCE_DIR}/../lib/${CMAKE_BUILD_TYPE}/)
 
 # Define which source files are required for the target executable
 add_library(culibtest SHARED
