@@ -30,7 +30,3 @@ target_include_directories(tests PRIVATE ${Boost_INCLUDE_DIRS})
 
 # Define link libraries for the target
 target_link_libraries(tests culibtest)
-
-
-# Add some extra cmake rules for the end of the script
-include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/cleanup.cmake)

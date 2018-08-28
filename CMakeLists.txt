@@ -11,3 +11,6 @@ add_subdirectory(examples/helloWorld)
 # Add the tests directory (if required)
 
 add_subdirectory(tests)
+
+message("Generated with CMAKE_BUILD_TYPE types: ${CMAKE_BUILD_TYPE}")
+message("Generated with config types: ${CMAKE_CONFIGURATION_TYPES}")

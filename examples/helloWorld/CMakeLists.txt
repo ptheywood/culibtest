@@ -25,6 +25,3 @@ target_include_directories(helloWorld PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../
 
 # Define link libraries for the target
 target_link_libraries(helloWorld culibtest)
-
-# Add some extra cmake rules for the end of the script
-include(${CMAKE_CURRENT_SOURCE_DIR}/../../cmake/cleanup.cmake)

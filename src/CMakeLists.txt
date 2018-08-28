@@ -23,6 +23,3 @@ set_property(TARGET culibtest PROPERTY CUDA_SEPARABLE_COMPILATION ON)
 
 # Define include dirs
 target_include_directories(culibtest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
-
-# Add some extra cmake rules for the end of the script
-include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/cleanup.cmake)
