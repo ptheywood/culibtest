@@ -7,11 +7,9 @@ typedef unsigned int(*dfuncptr)(unsigned int);
 // __constant__ unsigned int d_twelve = 0;
 
 __device__ unsigned int someDeviceFunction(unsigned int N) {
-	// printf("someDeviceFunction\n");
-	//unsigned int idx = threadIdx.x + blockDim.x * blockIdx.x;
-	//return idx;
+	unsigned int idx = threadIdx.x + blockDim.x * blockIdx.x;
 	return d_twelve;
-	// return 1;
+	// return idx;
 }
 
 __device__ dfuncptr someDeviceFunction_ptr = someDeviceFunction;
@@ -37,8 +35,9 @@ int main(int argc, char * argv[]){
 		return 1;
 	}
 
-	printf("%p\n", h_someDeviceFunction_ptr);
+	//printf("%p\n", h_someDeviceFunction_ptr);
 	unsigned int sum = obj.launchRandomKernal(h_someDeviceFunction_ptr, 1024);
+	unsigned int expected = 523776; // 1023th trianular number
 
 	status = cudaDeviceSynchronize();
 	if (cudaSuccess != status) {
@@ -49,7 +48,7 @@ int main(int argc, char * argv[]){
 		printf("cuda error %s:%d!\n\t%d:%s\n", __FILE__, __LINE__, status, cudaGetErrorString(status));
 	}
 
-	printf("sum: %u\n", sum);
+	printf("sum: %u, expected: %u\n", sum, expected);
 
 
 	unsigned int l_twelve = 0;

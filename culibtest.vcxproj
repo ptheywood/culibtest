@@ -14,13 +14,9 @@
     <ClInclude Include="include\culibtest.h" />
     <ClInclude Include="include\culibtest\defines.h" />
     <ClInclude Include="include\culibtest\SomeClass.h" />
-    <ClInclude Include="include\culibtest\user.h" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="src\culibtest\SomeClass.cu" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\culibtest\temp.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CC00FED7-72DA-4DAD-BD71-997142D4422B}</ProjectGuid>

@@ -11,10 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="test_all.cpp" />
+    <ClInclude Include="test_SomeClass.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="test_SomeClass.h" />
+    <CudaCompile Include="test_all.cu" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DBBC0ABE-635E-446D-A77B-B3FA186A8409}</ProjectGuid>
