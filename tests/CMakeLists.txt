@@ -30,5 +30,5 @@ target_include_directories(tests PRIVATE ${Boost_INCLUDE_DIRS})
 
 # Define link libraries for the target
 # target_link_libraries(tests culibtest)
-target_link_libraries(tests ${CMAKE_CURRENT_SOURCE_DIR}/../lib/${CMAKE_BUILD_TYPE}/libculibtest.so)
+target_link_libraries(tests ${CMAKE_CURRENT_SOURCE_DIR}/../lib/${CMAKE_BUILD_TYPE}/libculibtest.a)
 

@@ -6,6 +6,9 @@
 
 #include <cuda_runtime.h>
 
+extern "C" __device__ unsigned int d_twelve;
+extern "C" unsigned int h_twelve;
+
 namespace culibtest {
 	
 	// Forward declare the class, which is publically visible
@@ -27,6 +30,5 @@ namespace culibtest {
 
 	
 	__global__ void simple_kernal(unsigned int(*device_function_ptr)(unsigned int), unsigned int N, unsigned int * d_indices);
-	
 	
 }

@@ -6,7 +6,12 @@
 
 #include <cuda_runtime.h>
 
+__constant__ unsigned int d_twelve = 0;
+unsigned int h_twelve = 12;
+
 namespace culibtest {
+
+
 	
 	SomeClass::SomeClass() : 
 		privateInt(0),
@@ -36,6 +41,20 @@ namespace culibtest {
 
 	unsigned int SomeClass::launchRandomKernal(unsigned int(*device_function_ptr)(unsigned int), const unsigned int N) {
 		cudaError_t status;
+
+		h_twelve = 12;
+		status = cudaMemcpyToSymbol(d_twelve, &h_twelve, sizeof(unsigned int));
+		if (cudaSuccess != status) {
+			printf("cuda error %s:%d!\n\t%d:%s\n", __FILE__, __LINE__, status, cudaGetErrorString(status));
+		}
+		printf("Copied h_twelve to d_twelve\n");
+
+		unsigned int l_twelve = 0;
+		status = cudaMemcpyFromSymbol(&l_twelve, d_twelve, sizeof(unsigned int));
+		if (cudaSuccess != status) {
+			printf("cuda error %s:%d!\n\t%d:%s\n", __FILE__, __LINE__, status, cudaGetErrorString(status));
+		}
+		printf("l_twelve %u\n", l_twelve);
 
 
 		unsigned int * h_values = (unsigned int *)std::malloc(N * sizeof(unsigned int));

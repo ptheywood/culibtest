@@ -19,6 +19,9 @@ add_executable(helloWorld
 
 # Enable RDC
 set_property(TARGET helloWorld PROPERTY CUDA_SEPARABLE_COMPILATION ON)
+set_target_properties(helloWorld PROPERTIES POSITION_INDEPENDENT_CODE ON)
+set_property(TARGET helloWorld PROPERTY CUDA_RESOLVE_DEVICE_SYMBOLS ON)
+
 
 # Define include dirs
 target_include_directories(helloWorld PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../include)
@@ -28,4 +31,6 @@ target_include_directories(helloWorld PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../
 
 # Define link libraries for the target
 # target_link_libraries(helloWorld culibtest)
-target_link_libraries(helloWorld ${CMAKE_CURRENT_SOURCE_DIR}/../../lib/${CMAKE_BUILD_TYPE}/libculibtest.so)
+# target_link_libraries(helloWorld ${CMAKE_CURRENT_SOURCE_DIR}/../../lib/${CMAKE_BUILD_TYPE}/libculibtest.so)
+  target_link_libraries(helloWorld PRIVATE particles)
+set (CMAKE_EXE_LINKER_FLAGS "-Wl,--yolo")

@@ -4,12 +4,14 @@
 
 typedef unsigned int(*dfuncptr)(unsigned int);
 
+// __constant__ unsigned int d_twelve = 0;
 
 __device__ unsigned int someDeviceFunction(unsigned int N) {
-	printf("someDeviceFunction\n");
+	// printf("someDeviceFunction\n");
 	//unsigned int idx = threadIdx.x + blockDim.x * blockIdx.x;
 	//return idx;
-	return 1;
+	return d_twelve;
+	// return 1;
 }
 
 __device__ dfuncptr someDeviceFunction_ptr = someDeviceFunction;
@@ -17,7 +19,9 @@ __device__ dfuncptr someDeviceFunction_ptr = someDeviceFunction;
 
 
 int main(int argc, char * argv[]){
+	cudaError_t status = cudaSuccess;
 	printf("helloWorld Example:\n");
+
 	
 	culibtest::SomeClass obj = culibtest::SomeClass();
 	
@@ -25,11 +29,8 @@ int main(int argc, char * argv[]){
 	obj.setPrivateInt(12);
 	printf("privateInt %u\n", obj.getPrivateInt());
 
-
-
 	//someDeviceFunction_ptr = &someDeviceFunction; // bad
 	dfuncptr h_someDeviceFunction_ptr;
-	cudaError_t status = cudaSuccess;
 	status = cudaMemcpyFromSymbol(&h_someDeviceFunction_ptr, someDeviceFunction_ptr, sizeof(dfuncptr));
 	if (status != cudaSuccess) {
 		printf("Error, could not get devidce pointer.\n");
@@ -49,6 +50,14 @@ int main(int argc, char * argv[]){
 	}
 
 	printf("sum: %u\n", sum);
+
+
+	unsigned int l_twelve = 0;
+	status = cudaMemcpyFromSymbol(&l_twelve, d_twelve, sizeof(unsigned int));
+	if (cudaSuccess != status) {
+		printf("cuda error %s:%d!\n\t%d:%s\n", __FILE__, __LINE__, status, cudaGetErrorString(status));
+	}
+	printf("l_twelve %u\n", l_twelve);
 	
 	
 }
