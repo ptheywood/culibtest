@@ -31,6 +31,6 @@ target_include_directories(helloWorld PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../
 
 # Define link libraries for the target
 # target_link_libraries(helloWorld culibtest)
-# target_link_libraries(helloWorld ${CMAKE_CURRENT_SOURCE_DIR}/../../lib/${CMAKE_BUILD_TYPE}/libculibtest.so)
-  target_link_libraries(helloWorld PRIVATE particles)
-set (CMAKE_EXE_LINKER_FLAGS "-Wl,--yolo")
+target_link_libraries(helloWorld ${CMAKE_CURRENT_SOURCE_DIR}/../../lib/${CMAKE_BUILD_TYPE}/libculibtest.a)
+  # target_link_libraries(helloWorld PRIVATE particles)
+# set (CMAKE_EXE_LINKER_FLAGS "-Wl,--yolo")

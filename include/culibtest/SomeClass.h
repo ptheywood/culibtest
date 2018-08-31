@@ -6,7 +6,7 @@
 
 #include <cuda_runtime.h>
 
-extern "C" __device__ unsigned int d_twelve;
+extern "C" __constant__ unsigned int d_twelve;
 extern "C" unsigned int h_twelve;
 
 namespace culibtest {
