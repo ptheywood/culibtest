@@ -1,5 +1,4 @@
-#include <culibtest/SomeClass.h>
-#include "../include/culibtest/SomeClass.h"
+#include <culibtest/SomeClass.cuh>
 #include <stdio.h>
 #include <cstdlib>
 #include <cstring>

@@ -2,4 +2,4 @@
 
 #pragma once
 
-#include "culibtest/SomeClass.h"
+#include "culibtest/SomeClass.cuh"

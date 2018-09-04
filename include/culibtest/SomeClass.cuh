@@ -6,8 +6,8 @@
 
 #include <cuda_runtime.h>
 
-extern "C" __constant__ unsigned int d_twelve;
-extern "C" unsigned int h_twelve;
+extern __constant__ unsigned int d_twelve;
+extern unsigned int h_twelve;
 
 namespace culibtest {
 	
