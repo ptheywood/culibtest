@@ -1,6 +1,6 @@
 #pragma once
 
-#include <culibtest/SomeClass.h>
+#include <culibtest/SomeClass.cuh>
 
 BOOST_AUTO_TEST_SUITE(ModelDescTest) //name of the test suite is modelDescTest
 

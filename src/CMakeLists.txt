@@ -1,27 +1,23 @@
-# CMake for culibtest project
-
-# Set the minimum cmake version to that which supports cuda natively.
 cmake_minimum_required(VERSION VERSION 3.8 FATAL_ERROR)
 
-# Name the project and set languages
 project(culibtest CUDA CXX)
 
-# Include common rules.
-include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/common.cmake)
+# Specify using C++11 standard
+if(NOT DEFINED CMAKE_CXX_STANDARD)
+    set(CMAKE_CXX_STANDARD 11)
+    set(CMAKE_CXX_STANDARD_REQUIRED true)
+endif()
 
+# Tell CUDA to use C++11 standard
+if(NOT DEFINED CMAKE_CUDA_STANDARD)
+    set(CMAKE_CUDA_STANDARD 11)
+    set(CMAKE_CUDA_STANDARD_REQUIRED True)
+endif()
 
-# Define output location of binary files
-SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${culibtest_SOURCE_DIR}/../lib/${CMAKE_BUILD_TYPE}/)
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -gencode arch=compute_30,code=sm_30 -gencode arch=compute_35,code=sm_35 -gencode arch=compute_37,code=sm_37 -gencode arch=compute_50,code=sm_50 -gencode arch=compute_52,code=sm_52 -gencode arch=compute_60,code=sm_60 -gencode arch=compute_61,code=sm_61 -gencode arch=compute_70,code=sm_70 -gencode arch=compute_70,code=compute_70")
 
-# Define which source files are required for the target executable
-add_library(culibtest STATIC
+add_library(culibtest STATIC 
     ${CMAKE_CURRENT_SOURCE_DIR}/culibtest/SomeClass.cu
 )
-
-set_property(TARGET culibtest PROPERTY CUDA_RESOLVE_DEVICE_SYMBOLS ON)
-# Enable RDC
-set_property(TARGET culibtest PROPERTY CUDA_SEPARABLE_COMPILATION ON)
-set_target_properties(culibtest PROPERTIES POSITION_INDEPENDENT_CODE ON)
-
-# Define include dirs
 target_include_directories(culibtest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../include)
+set_property(TARGET culibtest PROPERTY CUDA_SEPARABLE_COMPILATION ON)
