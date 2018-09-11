@@ -7,9 +7,9 @@
 
 	// If building the library, 
 	#if defined(CULIBTEST_DLL) // libculibtest
-		#define CULIBTEST_API __declspec(dllexport)
+		//#define CULIBTEST_API __declspec(dllexport)
 	#else 
-		#define CULIBTEST_API __declspec(dllimport)
+		//#define CULIBTEST_API __declspec(dllimport)
 	#endif
 
 // Otherwise if not windows
@@ -19,3 +19,5 @@
 	#define CULIBTEST_API __attribute__((visibility("default")))
 
 #endif
+
+#define CULIBTEST_API
