@@ -16,9 +16,6 @@
   <ItemGroup>
     <CudaCompile Include="examples\helloWorld\src\main.cu" />
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Source.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{EF1E0706-1439-4D09-AFE9-DC36DAEEFE66}</ProjectGuid>
     <RootNamespace>helloWorld</RootNamespace>

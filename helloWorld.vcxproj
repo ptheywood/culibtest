@@ -21,9 +21,6 @@
     <ClInclude Include="include\culibtest\defines.h" />
     <ClInclude Include="include\culibtest\SomeClass.cuh" />
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Source.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{997E0757-EA74-4A4E-A0FC-47D8C8831A15}</ProjectGuid>
     <RootNamespace>libculibtest</RootNamespace>
