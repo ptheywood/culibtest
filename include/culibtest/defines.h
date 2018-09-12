@@ -16,7 +16,7 @@
 #else 
 
 	// Define the API macro as default visibility
-	#define CULIBTEST_API __attribute__((visibility("default")))
+	// #define CULIBTEST_API __attribute__((visibility("default")))
 
 #endif
 

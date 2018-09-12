@@ -8,8 +8,8 @@ typedef unsigned int(*dfuncptr)(unsigned int);
 
 __device__ unsigned int someDeviceFunction(unsigned int N) {
 	unsigned int idx = threadIdx.x + blockDim.x * blockIdx.x;
-	return d_twelve;
-	// return idx;
+	return idx;
+	// return d_twelve;
 }
 
 __device__ dfuncptr someDeviceFunction_ptr = someDeviceFunction;
